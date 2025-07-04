@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OWU - Original Works for Universities</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+<!-- Font Awesome -->
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+<!-- Video Background -->
+<div class="video-bg">
+<video autoplay loop muted playsinline webkit-playsinline>
+<source src="https://res.cloudinary.com/dsrrsctqi/video/upload/v1751470028/Cinematic_logo_animation_202507021826_u91d6r.mp4" type="video/mp4" />
+</video>
+</div>
+
+<!-- Header -->
+<header class="header">
+<div class="container flex items-center justify-between">
+<a class="logo flex items-center gap-8" href="#hero">
+<img src="https://res.cloudinary.com/dakh8yrv4/image/upload/v1751527804/photo_2025-07-03_10-20-43_qhlcuh.jpg" alt="OWU Logo" class="logo__img">
+<span class="logo__text">OWU</span>
+</a>
+
+<nav aria-label="Основная навигация" class="nav">
+<button aria-label="Открыть меню" class="nav__toggle">☰</button>
+<ul class="nav__list flex gap-16">
+ <li><a href="#services">Услуги</a></li>
+ <li><a href="#calculator">Калькулятор</a></li>
+ <li><a href="#stats">Статистика</a></li>
+ <li><a href="#reviews">Отзывы</a></li>
+ <li><a href="#team">Команда</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main>
+<!-- Hero Section -->
+<section class="section hero flex flex-col items-center justify-center text-center" id="hero">
+<div class="container">
+<h1>OWU - Original Works for Universities</h1>
+<p class="hero__subtitle">Профессиональная поддержка студентов: консультации по учебным работам, психологическая помощь, репетиторство</p>
+<div class="hero__buttons mt-8">
+<a class="btn btn--primary" href="https://t.me/originalworksforuniversities" target="_blank">Наш канал</a>
+<a class="btn btn--secondary" href="https://t.me/feedbackowu" target="_blank">Канал отзывов</a>
+<a class="btn btn--success" href="https://t.me/whitejuice" target="_blank">Заказать услугу</a>
+</div>
+</div>
+</section>
+
+<!-- Services Section -->
+<section class="section services" id="services">
+<div class="container">
+<h2 class="section__title">Наши услуги</h2>
+<div class="services__grid">
+<article class="service-card">
+<span class="service-card__icon">📚</span>
+<h3>Консультации по учебным работам</h3>
+<p>Помощь в подготовке рефератов, курсовых, ВКР, дипломов с проверкой антиплагиата</p>
+<ul class="service-features">
+ <li>Соответствие ГОСТ</li>
+ <li>Проверка антиплагиата</li>
+ <li>Бесплатные правки</li>
+ <li>Все источники прилагаются</li>
+</ul>
+<div class="service-price">от 1400₽</div>
+</article>
+
+<article class="service-card">
+<span class="service-card__icon">🎓</span>
+<h3>Репетиторские услуги</h3>
+<p>Подготовка к ЕГЭ и ОГЭ по математике и информатике. Индивидуальные занятия и групповая подготовка.</p>
+<ul class="service-features">
+ <li>Математика ЕГЭ/ОГЭ</li>
+ <li>Информатика ЕГЭ/ОГЭ</li>
+ <li>Индивидуальный подход</li>
+ <li>Гарантированный результат</li>
+</ul>
+<div class="service-price">от 900₽ в час</div>
+</article>
+
+<article class="service-card">
+<span class="service-card__icon">🧠</span>
+<h3>Психологическая поддержка</h3>
+<p>Консультации дипломированного психолога Екатерины. Работа с мотивацией, стрессом, токсичными отношениями.</p>
+<ul class="service-features">
+ <li>Работа с мотивацией</li>
+ <li>Преодоление стресса</li>
+ <li>Токсичные отношения</li>
+ <li>5+ лет опыта</li>
+</ul>
+<div class="service-price">от 2800₽ за консультацию</div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- Calculator Section -->
+<section class="section calculator" id="calculator">
+<div class="container">
+<h2 class="section__title">Калькулятор стоимости</h2>
+<div class="calculator__container">
+<div class="calculator__header">
+<h3>Рассчитайте стоимость вашей работы</h3>
+<p>Пошаговый расчет с учетом всех параметров</p>
+</div>
+<div class="calculator__body">
+<div class="calculator__steps">
+<div class="step active" id="step1">
+<div class="step__number">1</div>
+<span>Выбор услуги</span>
+</div>
+<div class="step" id="step2">
+<div class="step__number">2</div>
+<span>Параметры</span>
+</div>
+<div class="step" id="step3">
+<div class="step__number">3</div>
+<span>Расчет</span>
+</div>
+</div>
+
+<form id="priceCalculator">
+<!-- Шаг 1: Выбор типа услуги -->
+<div class="form-group">
+<label class="form-label" for="serviceType">Выберите тип услуги</label>
+<select class="form-select" id="serviceType" required>
+<option value="">-- Выберите услугу --</option>
+<option value="diploma">Дипломная работа (ВКР) / Магистерская диссертация</option>
+<option value="coursework">Курсовая работа / НИР / Реферат</option>
+<option value="project">Проект / Отчет по практике</option>
+<option value="article">Научная статья</option>
+<option value="candidate">Кандидатская диссертация</option>
+<option value="presentation">Презентация</option>
+<option value="psychology">Психологическая консультация</option>
+<option value="tutoring">Репетиторские услуги</option>
+</select>
+</div>
+
+<!-- Поля для дипломной/магистерской работы -->
+<div class="service-fields" id="diplomaFields">
+<div class="form-group">
+<label class="form-label">Тип работы</label>
+<div class="radio-group">
+<label class="radio-option">
+<input type="radio" name="diplomaType" value="diploma">
+<span>Дипломная (ВКР)</span>
+</label>
+<label class="radio-option">
+<input type="radio" name="diplomaType" value="master">
+<span>Магистерская</span>
+</label>
+</div>
+</div>
+
+<div class="form-grid">
+<div class="form-group">
+<label class="form-label" for="diplomaPages">Объем страниц</label>
+<select class="form-select" id="diplomaPages">
+<option value="40-49">40-49 страниц</option>
+<option value="50-59">50-59 страниц</option>
+<option value="60+">60+ страниц</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="diplomaOriginality">Процент оригинальности</label>
+<select class="form-select" id="diplomaOriginality">
+<option value="50">50%</option>
+<option value="65">65%</option>
+<option value="80">80%+ (доплата 5%)</option>
+</select>
+</div>
+</div>
+
+<div class="form-grid">
+<div class="form-group">
+<label class="form-label" for="diplomaDeadline">Срок сдачи</label>
+<select class="form-select" id="diplomaDeadline">
+<option value="normal">Более 14 дней</option>
+<option value="medium">5-13 дней</option>
+<option value="urgent">3-4 дня</option>
+<option value="very-urgent">1-2 дня</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="diplomaDiscipline">Дисциплина</label>
+<select class="form-select" id="diplomaDiscipline">
+<optgroup label="Точные, естественные и технические науки">
+<option value="technical">Математика и механика</option>
+<option value="technical">Физика и астрономия</option>
+<option value="technical">Информационные технологии</option>
+<option value="technical">Инженерные направления</option>
+<option value="technical">Науки о Земле</option>
+<option value="technical">Экономика и управление</option>
+</optgroup>
+<optgroup label="Гуманитарные и социальные науки">
+<option value="humanitarian">Юриспруденция</option>
+<option value="humanitarian">История и археология</option>
+<option value="humanitarian">Философия, этика и религиоведение</option>
+<option value="humanitarian">Языкознание и литературоведение</option>
+<option value="humanitarian">Социология и социальная работа</option>
+<option value="humanitarian">Политология и регионоведение</option>
+<option value="humanitarian">Психология</option>
+<option value="humanitarian">Педагогика</option>
+</optgroup>
+<optgroup label="Прочие направления">
+<option value="other">Медицина и здравоохранение</option>
+<option value="other">Искусство и культура</option>
+<option value="other">Сельское хозяйство</option>
+<option value="other">Туризм и сервис</option>
+</optgroup>
+</select>
+</div>
+</div>
+
+<div class="form-group">
+<label class="checkbox-group">
+<input type="checkbox" id="diplomaDrawings">
+<span>Требуются чертежи</span>
+</label>
+</div>
+</div>
+
+<!-- Поля для курсовой/НИР/реферата -->
+<div class="service-fields" id="courseworkFields">
+<div class="form-group">
+<label class="form-label" for="courseworkPages">Количество страниц: <span id="courseworkPagesValue">20</span></label>
+<input type="range" class="slider" id="courseworkPages" min="1" max="100" value="20">
+<div class="pages-input-group">
+<span>Или введите точное количество:</span>
+<input type="number" id="courseworkPagesInput" min="1" max="100" value="20">
+<span>страниц</span>
+</div>
+</div>
+
+<div class="form-grid">
+<div class="form-group">
+<label class="form-label" for="courseworkOriginality">Процент оригинальности</label>
+<select class="form-select" id="courseworkOriginality">
+<option value="50">50%</option>
+<option value="70">70% и выше</option>
+<option value="80">80%+ (доплата 5%)</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="courseworkDeadline">Срок сдачи</label>
+<select class="form-select" id="courseworkDeadline">
+<option value="normal">Более 2 недель</option>
+<option value="medium">Менее 2 недель</option>
+<option value="urgent">1-2 дня</option>
+</select>
+</div>
+</div>
+
+<div class="form-group">
+<label class="form-label" for="courseworkDiscipline">Дисциплина</label>
+<select class="form-select" id="courseworkDiscipline">
+<optgroup label="Точные, естественные и технические науки">
+<option value="technical">Математика и механика</option>
+<option value="technical">Физика и астрономия</option>
+<option value="technical">Информационные технологии</option>
+<option value="technical">Инженерные направления</option>
+<option value="technical">Науки о Земле</option>
+<option value="technical">Экономика и управление</option>
+</optgroup>
+<optgroup label="Гуманитарные и социальные науки">
+<option value="humanitarian">Юриспруденция</option>
+<option value="humanitarian">История и археология</option>
+<option value="humanitarian">Философия, этика и религиоведение</option>
+<option value="humanitarian">Языкознание и литературоведение</option>
+<option value="humanitarian">Социология и социальная работа</option>
+<option value="humanitarian">Политология и регионоведение</option>
+<option value="humanitarian">Психология</option>
+<option value="humanitarian">Педагогика</option>
+</optgroup>
+<optgroup label="Прочие направления">
+<option value="other">Медицина и здравоохранение</option>
+<option value="other">Искусство и культура</option>
+<option value="other">Сельское хозяйство</option>
+<option value="other">Туризм и сервис</option>
+</optgroup>
+</select>
+</div>
+
+<div class="form-group">
+<label class="checkbox-group">
+<input type="checkbox" id="courseworkDrawings">
+<span>Требуются чертежи</span>
+</label>
+</div>
+</div>
+
+<!-- Поля для проекта/отчета по практике -->
+<div class="service-fields" id="projectFields">
+<div class="form-grid">
+<div class="form-group">
+<label class="form-label" for="projectPages">Объем страниц</label>
+<select class="form-select" id="projectPages">
+<option value="20">20 страниц</option>
+<option value="30">30 страниц</option>
+<option value="40">40 страниц</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="projectDiscipline">Дисциплина</label>
+<select class="form-select" id="projectDiscipline">
+<optgroup label="Точные, естественные и технические науки">
+<option value="technical">Математика и механика</option>
+<option value="technical">Физика и астрономия</option>
+<option value="technical">Информационные технологии</option>
+<option value="technical">Инженерные направления</option>
+<option value="technical">Науки о Земле</option>
+<option value="technical">Экономика и управление</option>
+</optgroup>
+<optgroup label="Гуманитарные и социальные науки">
+<option value="humanitarian">Юриспруденция</option>
+<option value="humanitarian">История и археология</option>
+<option value="humanitarian">Философия, этика и религиоведение</option>
+<option value="humanitarian">Языкознание и литературоведение</option>
+<option value="humanitarian">Социология и социальная работа</option>
+<option value="humanitarian">Политология и регионоведение</option>
+<option value="humanitarian">Психология</option>
+<option value="humanitarian">Педагогика</option>
+</optgroup>
+<optgroup label="Прочие направления">
+<option value="other">Медицина и здравоохранение</option>
+<option value="other">Искусство и культура</option>
+<option value="other">Сельское хозяйство</option>
+<option value="other">Туризм и сервис</option>
+</optgroup>
+</select>
+</div>
+</div>
+
+<div class="form-group">
+<label class="checkbox-group">
+<input type="checkbox" id="projectDrawings">
+<span>Требуются чертежи</span>
+</label>
+</div>
+</div>
+
+<!-- Поля для научной статьи -->
+<div class="service-fields" id="articleFields">
+<div class="form-group">
+<label class="form-label" for="articlePages">Количество страниц: <span id="articlePagesValue">7</span></label>
+<input type="range" class="slider" id="articlePages" min="1" max="50" value="7">
+<div class="pages-input-group">
+<span>Или введите точное количество:</span>
+<input type="number" id="articlePagesInput" min="1" max="50" value="7">
+<span>страниц</span>
+</div>
+</div>
+</div>
+
+<!-- Поля для кандидатской диссертации -->
+<div class="service-fields" id="candidateFields">
+<div class="form-group">
+<label class="form-label" for="candidateDiscipline">Дисциплина</label>
+<select class="form-select" id="candidateDiscipline">
+<optgroup label="Точные, естественные и технические науки">
+<option value="technical">Математика и механика</option>
+<option value="technical">Физика и астрономия</option>
+<option value="technical">Информационные технологии</option>
+<option value="technical">Инженерные направления</option>
+<option value="technical">Науки о Земле</option>
+<option value="technical">Экономика и управление</option>
+</optgroup>
+<optgroup label="Гуманитарные и социальные науки">
+<option value="humanitarian">Юриспруденция</option>
+<option value="humanitarian">История и археология</option>
+<option value="humanitarian">Философия, этика и религиоведение</option>
+<option value="humanitarian">Языкознание и литературоведение</option>
+<option value="humanitarian">Социология и социальная работа</option>
+<option value="humanitarian">Политология и регионоведение</option>
+<option value="humanitarian">Психология</option>
+<option value="humanitarian">Педагогика</option>
+</optgroup>
+<optgroup label="Прочие направления">
+<option value="other">Медицина и здравоохранение</option>
+<option value="other">Искусство и культура</option>
+<option value="other">Сельское хозяйство</option>
+<option value="other">Туризм и сервис</option>
+</optgroup>
+</select>
+</div>
+</div>
+
+<!-- Поля для презентации -->
+<div class="service-fields" id="presentationFields">
+<div class="form-group">
+<label class="form-label" for="presentationSlides">Количество слайдов: <span id="presentationSlidesValue">15</span></label>
+<input type="range" class="slider" id="presentationSlides" min="1" max="50" value="15">
+<div class="pages-input-group">
+<span>Или введите точное количество:</span>
+<input type="number" id="presentationSlidesInput" min="1" max="50" value="15">
+<span>слайдов</span>
+</div>
+</div>
+</div>
+
+<!-- Поля для репетиторских услуг -->
+<div class="service-fields" id="tutoringFields">
+<div class="form-group">
+<label class="form-label" for="tutoringDuration">Продолжительность</label>
+<select class="form-select" id="tutoringDuration">
+<option value="1">1 час</option>
+<option value="1.5">1.5 часа</option>
+<option value="2">2 часа</option>
+</select>
+</div>
+</div>
+
+<!-- Поля для психологической консультации -->
+<div class="service-fields" id="psychologyFields">
+<div class="form-group">
+<div style="background: linear-gradient(135deg, var(--success-color), #059669); color: white; padding: 20px; border-radius: 15px; text-align: center;">
+<h4 style="margin: 0 0 8px 0; font-size: 18px;">Психологическая консультация</h4>
+<p style="margin: 0; font-size: 14px; opacity: 0.9;">Фиксированная стоимость</p>
+</div>
+</div>
+</div>
+
+<!-- Промокод -->
+<div class="form-group" id="promoSection" style="display: none;">
+<label class="form-label" for="promoCode">Промокод (необязательно)</label>
+<input type="text" class="form-input" id="promoCode" placeholder="Введите промокод">
+</div>
+
+<!-- Кнопка расчета -->
+<button type="button" class="btn btn--primary" id="calculateBtn" style="width: 100%; margin-top: 20px; display: none;">
+Рассчитать стоимость
+</button>
+
+<!-- Результат -->
+<div class="price-result" id="priceResult">
+<div class="price-result__main" id="finalPrice">2800₽</div>
+<div class="price-result__breakdown" id="priceBreakdown">
+Психологическая консультация<br>
+Индивидуальная работа с дипломированным специалистом
+</div>
+<div class="price-result__note">
+Для уточнения деталей и записи на консультацию свяжитесь с нами
+</div>
+</div>
+</form>
+
+<div class="promo-section">
+<h4>Получите персональную скидку</h4>
+<p>Свяжитесь с нами для получения индивидуального предложения и обсуждения деталей вашего заказа.</p>
+<a href="https://t.me/whitejuice" target="_blank" class="btn btn--primary">Связаться с менеджером</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Statistics Section -->
+<section class="section stats" id="stats">
+<div class="container">
+<h2 class="section__title">Наши достижения</h2>
+<div class="stats__grid">
+<div class="stat-block">
+<span class="stat-block__number counter" data-target="12000">0</span>
+<p class="stat-block__label">Выполненных работ</p>
+</div>
+<div class="stat-block">
+<span class="stat-block__number counter" data-target="50">0</span>
+<p class="stat-block__label">Учеников сдали ЕГЭ/ОГЭ</p>
+</div>
+<div class="stat-block">
+<span class="stat-block__number counter" data-target="94">0</span>
+<p class="stat-block__label">Получили оценки 4-5</p>
+</div>
+<div class="stat-block">
+<span class="stat-block__number counter" data-target="82">0</span>
+<p class="stat-block__label">Средний балл по математике</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Reviews Section -->
+<section class="section reviews" id="reviews">
+<div class="container">
+<h2 class="section__title">Отзывы студентов</h2>
+<div aria-label="Карусель отзывов" class="reviews__carousel">
+<button aria-label="Предыдущий отзыв" class="carousel__btn carousel__btn--prev">❮</button>
+<div class="carousel__track-container">
+<ul class="carousel__track">
+<!-- Slide 1 -->
+<li class="carousel__slide current-slide">
+<div class="chat">
+<div class="bubble bubble--received">
+<p>Привет, диплом супер. Защитилась на 5, поставили 4 из за пропусков 😂</p>
+<span class="time">17:10</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 2 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--sent">
+<p>Привет ) подскажи пожалуйста, сдала? Как прошло?</p>
+<span class="time">12:24</span>
+</div>
+<div class="bubble bubble--received">
+<p>привет! все окей у меня 5 ❤️‍🔥</p>
+<span class="time">12:59</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 3 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--received">
+<p>много у кого у нас показало «сгенерированный текст», а у меня не было 😊</p>
+<span class="time">13:00</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 4 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--received">
+<p>вот вчера написала руководитель, 95 баллов. еще и на конкурс хочет отправить</p>
+<span class="time">12:39</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 5 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--received">
+<p>Сдала на отлично, все хорошо, всем все понравилось ахаха</p>
+<span class="time">12:41</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 6 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--received">
+<p>Спасибо большое за помощь с курсовой! Сдала на отлично, преподаватель даже похвалил за глубину анализа.</p>
+<span class="time">14:20</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 7 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--received">
+<p>Занимался с репетитором по информатике, за полгода поднял балл ЕГЭ на 30! Объясняют очень понятно, рекомендую.</p>
+<span class="time">18:55</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 8 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--received">
+<p>Маша, у меня просто потрясающие новости! Сегодня защитилась на пятерку! Спасибо огромное за помощь!</p>
+<span class="time">12:21</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 9 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--sent">
+<p>защитилась?</p>
+<span class="time">23:35</span>
+</div>
+<div class="bubble bubble--received">
+<p>защитила на отлично, спасибо тебе большое, комиссия оценила сайт, все отлично!</p>
+<span class="time">23:35</span>
+</div>
+</div>
+</li>
+
+<!-- Slide 10 -->
+<li class="carousel__slide">
+<div class="chat">
+<div class="bubble bubble--received">
+<p>большое человеческое спасибо за работу 🙏</p>
+<span class="time">00:59</span>
+</div>
+<div class="bubble bubble--sent">
+<p>Обращайся❤️</p>
+<span class="time">00:59</span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<button aria-label="Следующий отзыв" class="carousel__btn carousel__btn--next">❯</button>
+</div>
+
+<div class="reviews__more">
+<p>Больше отзывов в наших Telegram каналах:</p>
+<div class="flex gap-8 justify-center mt-8">
+<a class="btn btn--outline btn--sm" href="https://t.me/originalworksforuniversities" target="_blank">Основной канал</a>
+<a class="btn btn--outline btn--sm" href="https://t.me/feedbackowu" target="_blank">Канал отзывов</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Team Section -->
+<section class="section team" id="team">
+<div class="container">
+<h2 class="section__title">Наша команда</h2>
+<div class="team__grid">
+<article class="team-card">
+<img alt="Мария - Главный консультант и педагог" class="team-card__photo" src="https://res.cloudinary.com/dsrrsctqi/image/upload/v1751459795/problembo-result-20250702123059_ex7v7d.jpg" />
+<h3>Мария</h3>
+<h4 class="team-card__role">Главный консультант и педагог</h4>
+<p><strong>Специалист по гуманитарным дисциплинам</strong><br />
+Опытный педагог и консультант с глубокими знаниями в области гуманитарных наук. 900+ выполненных работ. Специализация: история, литература, языки, право, педагогика. Индивидуальный подход к каждому студенту.</p>
+</article>
+
+<article class="team-card">
+<img alt="Александр - Репетитор по математике и информатике" class="team-card__photo" src="https://res.cloudinary.com/dsrrsctqi/image/upload/v1751459749/problembo-result-20250702123503_mr0snx.jpg" />
+<h3>Александр</h3>
+<h4 class="team-card__role">Репетитор по математике и информатике</h4>
+<p><strong>Специалист по техническим дисциплинам</strong><br />
+Профессиональный репетитор с многолетним опытом подготовки к ЕГЭ/ОГЭ. 900+ выполненных работ. Специализация: математика, физика, информатика, инженерные науки. Гарантированное повышение баллов.</p>
+</article>
+
+<article class="team-card">
+<img alt="Екатерина - Психолог" class="team-card__photo" src="https://res.cloudinary.com/dakh8yrv4/image/upload/v1751311047/%D0%951_bspvbl.jpg" />
+<h3>Екатерина</h3>
+<h4 class="team-card__role">Дипломированный психолог</h4>
+<p><strong>Кандидат филологических наук</strong><br />
+Глубокое понимание коммуникации и человеческих отношений. Специализация: токсичные и зависимые отношения, преодоление стресса и тревожности, восстановление после расставания, работа с самооценкой и личными границами. 5 лет практики.</p>
+</article>
+
+<article class="team-card">
+<img alt="Станислав - Организатор и технический специалист" class="team-card__photo" src="https://res.cloudinary.com/dsrrsctqi/image/upload/v1751459850/photo_2025-06-28_12-46-44_hyjho6.jpg" />
+<h3>Станислав</h3>
+<h4 class="team-card__role">Организатор, консультант, главный технический специалист</h4>
+<p><strong>Ведущий технический эксперт</strong><br />
+Координирует работу всей команды и обеспечивает техническую поддержку проектов. Специализация: IT-консультирование, техническое сопровождение научных работ, организация рабочих процессов, контроль качества выполненных заданий.</p>
+</article>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="footer section">
+<div class="container flex flex-col items-center text-center gap-8">
+<img src="https://res.cloudinary.com/dakh8yrv4/image/upload/v1751527804/photo_2025-07-03_10-20-43_qhlcuh.jpg" alt="OWU Logo" class="footer__logo">
+<p>&copy; 2025 OWU – Original Works for Universities</p>
+<div class="footer__buttons">
+<a class="btn btn--outline" href="mailto:owuspec001@gmail.com">owuspec001@gmail.com</a>
+<a class="btn btn--primary" href="https://t.me/originalworksforuniversities" target="_blank">Наш канал</a>
+<a class="btn btn--secondary" href="https://t.me/feedbackowu" target="_blank">Отзывы</a>
+</div>
+</div>
+</footer>
+</body>
+<script src="script.js"></script>
+</html>
